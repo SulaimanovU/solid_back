@@ -12,6 +12,7 @@ exports.createUser = async (req, res, next) => {
     
     const name = req.body.name;
     const number = req.body.number;
+    const from = req.body.from;
     
     try {
       const user = await User.findOne({ where: { name: name, number: number } });
@@ -19,15 +20,16 @@ exports.createUser = async (req, res, next) => {
       if (user) {
         res.status(200).json({ result: 'Such user already exist'})
       }
+      else {
+        const { id } = await User.create({
+          name: name,
+          number: number,
+          from: from
+        });
+        
+        res.status(200).json({ result: id });
+      }
       
-      
-      const { id } = await User.create({
-        name: name,
-        number: number
-      });
-      
-      
-      res.status(200).json({ result: id });
     }
     catch(err) {
         next(err);

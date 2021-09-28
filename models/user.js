@@ -16,10 +16,14 @@ const user = sequelize.define('user', {
         type: Sequelize.STRING,
         defaultValue: 'empty'
     },
+    from: {
+      type: Sequelize.STRING,
+      defaultValue: 'empty'
+    },
     chat_id: {
       type: Sequelize.STRING,
       defaultValue: 'empty'
-  },
+    },
 });
 
 module.exports = user;

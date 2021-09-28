@@ -10,7 +10,8 @@ router.post(
     '/user',
     [
         body('name').trim().not().isEmpty(),
-        body('number').trim().not().isEmpty()
+        body('number').trim().not().isEmpty(),
+        body('from').trim().not().isEmpty()
     ],
     user.createUser
 );
