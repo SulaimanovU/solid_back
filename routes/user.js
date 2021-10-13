@@ -17,6 +17,8 @@ router.post(
 );
 
 
+router.get('/data', user.getData);
+
 module.exports = router;
 
 

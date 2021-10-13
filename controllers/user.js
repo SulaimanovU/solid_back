@@ -1,6 +1,6 @@
 const { validationResult } = require('express-validator');
 const User = require('../models/user');
-
+const websiteData = require('../models/web-data');
 
 exports.createUser = async (req, res, next) => {
 
@@ -45,7 +45,16 @@ exports.test = (req, res, next) => {
 
 
 
+exports.getData = async (req, res, next) => {
 
+  try {
+    res.status(200).json(websiteData);
+  }
+  catch(err) {
+    next(err);
+  }
+  
+}
 
 
 
